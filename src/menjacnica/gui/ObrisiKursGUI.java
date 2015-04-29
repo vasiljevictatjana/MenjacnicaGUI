@@ -67,7 +67,7 @@ public class ObrisiKursGUI extends JFrame {
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
 		
-		this.mGUI=mGUI;
+		this.mGUI = mGUI;
 	}
 
 	private JLabel getLblNewLabel() {
