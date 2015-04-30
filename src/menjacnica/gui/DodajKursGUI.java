@@ -15,8 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import biblioteka.Autor;
-import biblioteka.Knjiga;
+import menjacnicaa.Kurs;
+import menjacnicaa.Valuta;
+
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -27,16 +28,16 @@ public class DodajKursGUI extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textFieldSifra;
+	private JTextField textFieldNaziv;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textFieldProdajni;
+	private JTextField textFieldKupovni;
 	private JLabel lblNewLabel_4;
 	private JLabel lblNewLabel_5;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField textFieldSrednji;
+	private JTextField textFieldSkraceniNaziv;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	
@@ -59,16 +60,16 @@ public class DodajKursGUI extends JFrame {
 		contentPane.setLayout(new GridLayout(0, 2, 5, 5));
 		contentPane.add(getLblNewLabel());
 		contentPane.add(getLblNewLabel_1());
-		contentPane.add(getTextField());
-		contentPane.add(getTextField_1());
+		contentPane.add(getTextFieldSifra());
+		contentPane.add(getTextFieldNaziv());
 		contentPane.add(getLblNewLabel_2());
 		contentPane.add(getLblNewLabel_3());
-		contentPane.add(getTextField_2());
-		contentPane.add(getTextField_3());
+		contentPane.add(getTextFieldProdajni());
+		contentPane.add(getTextFieldKupovni());
 		contentPane.add(getLblNewLabel_4());
 		contentPane.add(getLblNewLabel_5());
-		contentPane.add(getTextField_4());
-		contentPane.add(getTextField_5());
+		contentPane.add(getTextFieldSrednji());
+		contentPane.add(getTextFieldSkraceniNaziv());
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
 		
@@ -87,19 +88,19 @@ public class DodajKursGUI extends JFrame {
 		}
 		return lblNewLabel_1;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setColumns(10);
+	private JTextField getTextFieldSifra() {
+		if (textFieldSifra == null) {
+			textFieldSifra = new JTextField();
+			textFieldSifra.setColumns(10);
 		}
-		return textField;
+		return textFieldSifra;
 	}
-	private JTextField getTextField_1() {
-		if (textField_1 == null) {
-			textField_1 = new JTextField();
-			textField_1.setColumns(10);
+	private JTextField getTextFieldNaziv() {
+		if (textFieldNaziv == null) {
+			textFieldNaziv = new JTextField();
+			textFieldNaziv.setColumns(10);
 		}
-		return textField_1;
+		return textFieldNaziv;
 	}
 	private JLabel getLblNewLabel_2() {
 		if (lblNewLabel_2 == null) {
@@ -113,19 +114,19 @@ public class DodajKursGUI extends JFrame {
 		}
 		return lblNewLabel_3;
 	}
-	private JTextField getTextField_2() {
-		if (textField_2 == null) {
-			textField_2 = new JTextField();
-			textField_2.setColumns(10);
+	private JTextField getTextFieldProdajni() {
+		if (textFieldProdajni == null) {
+			textFieldProdajni = new JTextField();
+			textFieldProdajni.setColumns(10);
 		}
-		return textField_2;
+		return textFieldProdajni;
 	}
-	private JTextField getTextField_3() {
-		if (textField_3 == null) {
-			textField_3 = new JTextField();
-			textField_3.setColumns(10);
+	private JTextField getTextFieldKupovni() {
+		if (textFieldKupovni == null) {
+			textFieldKupovni = new JTextField();
+			textFieldKupovni.setColumns(10);
 		}
-		return textField_3;
+		return textFieldKupovni;
 	}
 	private JLabel getLblNewLabel_4() {
 		if (lblNewLabel_4 == null) {
@@ -139,19 +140,19 @@ public class DodajKursGUI extends JFrame {
 		}
 		return lblNewLabel_5;
 	}
-	private JTextField getTextField_4() {
-		if (textField_4 == null) {
-			textField_4 = new JTextField();
-			textField_4.setColumns(10);
+	private JTextField getTextFieldSrednji() {
+		if (textFieldSrednji == null) {
+			textFieldSrednji = new JTextField();
+			textFieldSrednji.setColumns(10);
 		}
-		return textField_4;
+		return textFieldSrednji;
 	}
-	private JTextField getTextField_5() {
-		if (textField_5 == null) {
-			textField_5 = new JTextField();
-			textField_5.setColumns(10);
+	private JTextField getTextFieldSkraceniNaziv() {
+		if (textFieldSkraceniNaziv == null) {
+			textFieldSkraceniNaziv = new JTextField();
+			textFieldSkraceniNaziv.setColumns(10);
 		}
-		return textField_5;
+		return textFieldSkraceniNaziv;
 	}
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
@@ -174,6 +175,47 @@ public class DodajKursGUI extends JFrame {
 			});
 		}
 		return btnNewButton_1;
+	}
+	
+	private void unesiKurs() {
+		try {
+			Kurs kurs = new Kurs();
+
+			
+			kurs.setSifra(textFieldSifra.getText());
+			//kurs.setSkraceniNaziv(textFieldSkraceniNaziv.getText());
+			kurs.setProdajniKurs(Double.parseDouble(textFieldProdajni.getText()));
+			kurs.setSrednjiKurs(Double.parseDouble(textFieldSrednji.getText()));
+			kurs.setKupovniKurs(Double.parseDouble(textFieldKupovni.getText()));
+			//kurs.setNaziv(textFieldNaziv.getText());
+			
+			LinkedList<Valuta> valute = new LinkedList<Valuta>();
+			
+			if (textFieldNaziv.getText() != null
+					&& !textFieldSkraceniNaziv.getText().isEmpty()
+					&& textFieldSifra.getText() != null
+					&& !textFieldKupovni.getText().isEmpty()
+					&& !textFieldProdajni.getText().isEmpty()
+					&& !textFieldSrednji.getText().isEmpty()) {
+				Valuta valuta = new Valuta();
+				valuta.setNaziv(textFieldNaziv.getText());
+				valuta.setSkraceniNaziv(textFieldSkraceniNaziv.getText());
+				valute.add(valuta);
+				
+			}
+			
+			kurs.setValute(valute);
+			mGUI.sistem.dodajKurs(kurs);
+			dispose();
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public static String podaciIzDodaj(){
+		return "Sifra"+textFieldSifra.getText()+"Naziv:"+textFieldNaziv.getText()+"Skraceni naziv"+textFieldSkraceniNaziv.getText()+
+				"Prodajni"+textFieldProdajni.getText()+"Srednji:"+textFieldSrednji.getText()+"Kupovni"+textFieldKupovni.getText();
 	}
 	
 }

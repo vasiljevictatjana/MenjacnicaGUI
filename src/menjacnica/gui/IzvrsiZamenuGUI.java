@@ -6,19 +6,26 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Toolkit;
 import java.awt.GridLayout;
+
 import javax.swing.JLabel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import javax.swing.JButton;
 import javax.swing.JSlider;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.DefaultComboBoxModel;
 
 public class IzvrsiZamenuGUI extends JFrame {
@@ -38,6 +45,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	private MenjacnicaGUI mGUI;
+	
 	private JButton btnNewButton;
 	private JButton btnOdustani;
 	private JSlider slider;
@@ -58,6 +66,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 		comboBox.addItem("EUR");
 		comboBox.addItem("USD");
 		comboBox.addItem("CHF");
+		
 		
 		contentPane.add(getLabel_1());
 		contentPane.add(getTextField());
@@ -118,7 +127,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"EUR", "USD", "CHF"}));
+			//comboBox.setModel(new DefaultComboBoxModel(new String[] {"EUR", "USD", "CHF"}));
 			comboBox.setBounds(151, 43, 103, 20);
 		}
 		return comboBox;
@@ -133,6 +142,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	private JTextField getTextField_2() {
 		if (textField_2 == null) {
 			textField_2 = new JTextField();
+			textField_2.setText(JSlider.getValue());
 			textField_2.setColumns(10);
 			textField_2.setBounds(10, 119, 164, 20);
 		}
@@ -193,6 +203,8 @@ public class IzvrsiZamenuGUI extends JFrame {
 			slider.setMajorTickSpacing(10);
 			slider.setMinorTickSpacing(5);
 			slider.setBounds(10, 161, 396, 52);
+			JTextField text = newJTextField();
+			text.setText(Integer.parseInt(slider.getValue()));
 		}
 		return slider;
 	}

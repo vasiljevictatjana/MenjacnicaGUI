@@ -1,17 +1,24 @@
 package menjacnica.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Checkbox;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Toolkit;
 import java.awt.GridLayout;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
+
+import menjacnicaa.Kurs;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -31,11 +38,14 @@ public class ObrisiKursGUI extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JCheckBox chckbxNewCheckBox;
-	private JLabel lblNewLabel_6;
-	private JButton btnNewButton;
+	private static JButton btnNewButton;
 	private JButton btnNewButton_1;
+	
+	private Kurs kurs;
 
 	private MenjacnicaGUI mGUI;
+	private JCheckBox chckbxZaistaObrisiKurs;
+	private JLabel label;
 
 	/**
 	 * Create the frame.
@@ -62,11 +72,12 @@ public class ObrisiKursGUI extends JFrame {
 		contentPane.add(getLblNewLabel_5());
 		contentPane.add(getTextField_4());
 		contentPane.add(getTextField_5());
-		contentPane.add(getChckbxNewCheckBox());
-		contentPane.add(getLblNewLabel_6());
+		contentPane.add(getChckbxZaistaObrisiKurs());
+		contentPane.add(getLabel());
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
 		
+		this.kurs = kurs;
 		this.mGUI = mGUI;
 	}
 
@@ -154,26 +165,29 @@ public class ObrisiKursGUI extends JFrame {
 		}
 		return textField_5;
 	}
-	private JCheckBox getChckbxNewCheckBox() {
-		if (chckbxNewCheckBox == null) {
-			chckbxNewCheckBox = new JCheckBox("Zaista obrisi kurs");
-			chckbxNewCheckBox.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					
-				}
-			});
-		}
-		return chckbxNewCheckBox;
+	private JCheckBox getChckbxZaistaObrisiKurs() {
+		if (chckbxZaistaObrisiKurs == null) {
+			chckbxZaistaObrisiKurs = new JCheckBox("Zaista obrisi kurs");
+			chckbxZaistaObrisiKurs.setSelected(false);
+		};
+		
+		return chckbxZaistaObrisiKurs;
 	}
-	private JLabel getLblNewLabel_6() {
-		if (lblNewLabel_6 == null) {
-			lblNewLabel_6 = new JLabel("");
+	private JLabel getLabel() {
+		if (label == null) {
+			label = new JLabel("");
 		}
-		return lblNewLabel_6;
+		return label;
+
 	}
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Obrisi");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					obrisiKurs();
+				}
+			});
 			btnNewButton.setEnabled(false);
 		}
 		return btnNewButton;
@@ -189,4 +203,15 @@ public class ObrisiKursGUI extends JFrame {
 		}
 		return btnNewButton_1;
 	}
+	
+	private void obrisiKurs() {
+		try{
+			mGUI.sistem.obrisiKurs(kurs);
+			dispose();
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
 }

@@ -1,7 +1,7 @@
 package menjacnica.gui;
 
 
-
+import menjacnicaInterfejs.MenjacnicaInterfejs;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -70,6 +70,10 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton btnIzvrsiZamenu;
 	private JScrollPane scrollPane_1;
 	private JTextArea txtrStatus;
+	
+	
+	
+	protected MenjacnicaInterfejs sistem;;
 
 	/**
 	 * Launch the application.
@@ -111,6 +115,8 @@ public class MenjacnicaGUI extends JFrame {
 		contentPane.add(getPanel(), BorderLayout.EAST);
 		contentPane.add(getScrollPane_1(), BorderLayout.SOUTH);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane}));
+		
+	
 	}
 
 	private JMenuBar getMenuBar_1() {
@@ -346,6 +352,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JTextArea getTxtrStatus() {
 		if (txtrStatus == null) {
 			txtrStatus = new JTextArea();
+			JTextArea text = new JTextArea();
 		}
 		return txtrStatus;
 	}
@@ -358,8 +365,12 @@ public class MenjacnicaGUI extends JFrame {
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
 				sistem.ucitajIzFajla(file.getAbsolutePath());
-				prikaziSveKnjige();
+				JTextArea text = new JTextArea();
+				text.setText("Ucitan fajl:" +file.getAbsolutePath());
+				
 			}	
+			
+			
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
 					"Greska", JOptionPane.ERROR_MESSAGE);
@@ -375,6 +386,8 @@ public class MenjacnicaGUI extends JFrame {
 				File file = fc.getSelectedFile();
 
 				sistem.sacuvajUFajl(file.getAbsolutePath());
+				JTextArea text = new JTextArea();
+				text.setText("Sacuvan fajl:" +file.getAbsolutePath());
 			}
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
