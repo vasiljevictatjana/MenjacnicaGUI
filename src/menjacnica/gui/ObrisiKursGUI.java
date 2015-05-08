@@ -17,8 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 
-import menjacnicaa.Kurs;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -27,21 +25,21 @@ public class ObrisiKursGUI extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textFieldSifra;
+	private JTextField textFieldNaziv;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textFieldProdajni;
+	private JTextField textFieldKupovni;
 	private JLabel lblNewLabel_4;
 	private JLabel lblNewLabel_5;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField textFieldSrednji;
+	private JTextField textFieldSkraceniNaziv;
 	private JCheckBox chckbxNewCheckBox;
 	private static JButton btnNewButton;
 	private JButton btnNewButton_1;
 	
-	private Kurs kurs;
+
 
 	private MenjacnicaGUI mGUI;
 	private JCheckBox chckbxZaistaObrisiKurs;
@@ -62,16 +60,16 @@ public class ObrisiKursGUI extends JFrame {
 		contentPane.setLayout(new GridLayout(0, 2, 5, 5));
 		contentPane.add(getLblNewLabel());
 		contentPane.add(getLblNewLabel_1());
-		contentPane.add(getTextField());
-		contentPane.add(getTextField_1());
+		contentPane.add(getTextFieldSifra());
+		contentPane.add(getTextFieldNaziv());
 		contentPane.add(getLblNewLabel_2());
 		contentPane.add(getLblNewLabel_3());
-		contentPane.add(getTextField_2());
-		contentPane.add(getTextField_3());
+		contentPane.add(getTextFieldProdajni());
+		contentPane.add(getTextFieldKupovni());
 		contentPane.add(getLblNewLabel_4());
 		contentPane.add(getLblNewLabel_5());
-		contentPane.add(getTextField_4());
-		contentPane.add(getTextField_5());
+		contentPane.add(getTextFieldSrednji());
+		contentPane.add(getTextFieldSkraceniNaziv());
 		contentPane.add(getChckbxZaistaObrisiKurs());
 		contentPane.add(getLabel());
 		contentPane.add(getBtnNewButton());
@@ -93,21 +91,21 @@ public class ObrisiKursGUI extends JFrame {
 		}
 		return lblNewLabel_1;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setEditable(false);
-			textField.setColumns(10);
+	private JTextField getTextFieldSifra() {
+		if (textFieldSifra == null) {
+			textFieldSifra = new JTextField();
+			textFieldSifra.setEditable(false);
+			textFieldSifra.setColumns(10);
 		}
-		return textField;
+		return textFieldSifra;
 	}
-	private JTextField getTextField_1() {
-		if (textField_1 == null) {
-			textField_1 = new JTextField();
-			textField_1.setEditable(false);
-			textField_1.setColumns(10);
+	private JTextField getTextFieldNaziv() {
+		if (textFieldNaziv == null) {
+			textFieldNaziv = new JTextField();
+			textFieldNaziv.setEditable(false);
+			textFieldNaziv.setColumns(10);
 		}
-		return textField_1;
+		return textFieldNaziv;
 	}
 	private JLabel getLblNewLabel_2() {
 		if (lblNewLabel_2 == null) {
@@ -121,21 +119,21 @@ public class ObrisiKursGUI extends JFrame {
 		}
 		return lblNewLabel_3;
 	}
-	private JTextField getTextField_2() {
-		if (textField_2 == null) {
-			textField_2 = new JTextField();
-			textField_2.setEditable(false);
-			textField_2.setColumns(10);
+	private JTextField getTextFieldProdajni() {
+		if (textFieldProdajni == null) {
+			textFieldProdajni = new JTextField();
+			textFieldProdajni.setEditable(false);
+			textFieldProdajni.setColumns(10);
 		}
-		return textField_2;
+		return textFieldProdajni;
 	}
-	private JTextField getTextField_3() {
-		if (textField_3 == null) {
-			textField_3 = new JTextField();
-			textField_3.setEditable(false);
-			textField_3.setColumns(10);
+	private JTextField getTextFieldKupovni() {
+		if (textFieldKupovni == null) {
+			textFieldKupovni = new JTextField();
+			textFieldKupovni.setEditable(false);
+			textFieldKupovni.setColumns(10);
 		}
-		return textField_3;
+		return textFieldKupovni;
 	}
 	private JLabel getLblNewLabel_4() {
 		if (lblNewLabel_4 == null) {
@@ -149,21 +147,21 @@ public class ObrisiKursGUI extends JFrame {
 		}
 		return lblNewLabel_5;
 	}
-	private JTextField getTextField_4() {
-		if (textField_4 == null) {
-			textField_4 = new JTextField();
-			textField_4.setEditable(false);
-			textField_4.setColumns(10);
+	private JTextField getTextFieldSrednji() {
+		if (textFieldSrednji == null) {
+			textFieldSrednji = new JTextField();
+			textFieldSrednji.setEditable(false);
+			textFieldSrednji.setColumns(10);
 		}
-		return textField_4;
+		return textFieldSrednji;
 	}
-	private JTextField getTextField_5() {
-		if (textField_5 == null) {
-			textField_5 = new JTextField();
-			textField_5.setEditable(false);
-			textField_5.setColumns(10);
+	private JTextField getTextFieldSkraceniNaziv() {
+		if (textFieldSkraceniNaziv == null) {
+			textFieldSkraceniNaziv = new JTextField();
+			textFieldSkraceniNaziv.setEditable(false);
+			textFieldSkraceniNaziv.setColumns(10);
 		}
-		return textField_5;
+		return textFieldSkraceniNaziv;
 	}
 	private JCheckBox getChckbxZaistaObrisiKurs() {
 		if (chckbxZaistaObrisiKurs == null) {
@@ -205,13 +203,12 @@ public class ObrisiKursGUI extends JFrame {
 	}
 	
 	private void obrisiKurs() {
-		try{
-			mGUI.sistem.obrisiKurs(kurs);
-			dispose();
-		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
-					"Greska", JOptionPane.ERROR_MESSAGE);
-		}
+		mGUI.txtrStatus.setText(mGUI.txtrStatus.getText()+"\n"+"Obrisi knjigu -- >> Sifra: "+
+				textFieldSifra.getText()+"Naziv: "+textFieldNaziv.getText()
+				+"Prodajni kurs: "+textFieldProdajni.getText()+"Kuponvi kurs: "+textFieldKupovni.getText()+"Srednji kurs: "
+				+textFieldSrednji.getText()+"Skraceni nazvi: "+textFieldSkraceniNaziv.getText());
+					dispose();
 	}
+
 
 }

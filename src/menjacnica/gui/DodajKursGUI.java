@@ -15,10 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import menjacnicaa.Kurs;
-import menjacnicaa.Valuta;
-
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.LinkedList;
@@ -178,44 +174,11 @@ public class DodajKursGUI extends JFrame {
 	}
 	
 	private void unesiKurs() {
-		try {
-			Kurs kurs = new Kurs();
+		mGUI.txtrStatus.setText(mGUI.txtrStatus.getText()+"\n"+"Sifra: "+textFieldSifra.getText()+"Naziv: "+textFieldNaziv.getText()
+				+"Prodajni kurs: "+textFieldProdajni.getText()+"Kuponvi kurs: "+textFieldKupovni.getText()+"Srednji kurs: "
+				+textFieldSrednji.getText()+"Skraceni nazvi: "+textFieldSkraceniNaziv.getText());
+		dispose();
+	}
 
-			
-			kurs.setSifra(textFieldSifra.getText());
-			//kurs.setSkraceniNaziv(textFieldSkraceniNaziv.getText());
-			kurs.setProdajniKurs(Double.parseDouble(textFieldProdajni.getText()));
-			kurs.setSrednjiKurs(Double.parseDouble(textFieldSrednji.getText()));
-			kurs.setKupovniKurs(Double.parseDouble(textFieldKupovni.getText()));
-			//kurs.setNaziv(textFieldNaziv.getText());
-			
-			LinkedList<Valuta> valute = new LinkedList<Valuta>();
-			
-			if (textFieldNaziv.getText() != null
-					&& !textFieldSkraceniNaziv.getText().isEmpty()
-					&& textFieldSifra.getText() != null
-					&& !textFieldKupovni.getText().isEmpty()
-					&& !textFieldProdajni.getText().isEmpty()
-					&& !textFieldSrednji.getText().isEmpty()) {
-				Valuta valuta = new Valuta();
-				valuta.setNaziv(textFieldNaziv.getText());
-				valuta.setSkraceniNaziv(textFieldSkraceniNaziv.getText());
-				valute.add(valuta);
-				
-			}
-			
-			kurs.setValute(valute);
-			mGUI.sistem.dodajKurs(kurs);
-			dispose();
-		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
-					"Greska", JOptionPane.ERROR_MESSAGE);
-		}
-	}
-	
-	public static String podaciIzDodaj(){
-		return "Sifra"+textFieldSifra.getText()+"Naziv:"+textFieldNaziv.getText()+"Skraceni naziv"+textFieldSkraceniNaziv.getText()+
-				"Prodajni"+textFieldProdajni.getText()+"Srednji:"+textFieldSrednji.getText()+"Kupovni"+textFieldKupovni.getText();
-	}
 	
 }

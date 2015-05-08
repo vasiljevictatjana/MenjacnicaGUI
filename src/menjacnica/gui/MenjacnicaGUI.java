@@ -1,17 +1,12 @@
 package menjacnica.gui;
 
 
-import menjacnicaInterfejs.MenjacnicaInterfejs;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
-
 
 import java.awt.Component;
 import java.awt.Toolkit;
@@ -69,11 +64,10 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton btnObrisiKurs;
 	private JButton btnIzvrsiZamenu;
 	private JScrollPane scrollPane_1;
-	private JTextArea txtrStatus;
+	protected JTextArea txtrStatus;
 	
 	
-	
-	protected MenjacnicaInterfejs sistem;;
+
 
 	/**
 	 * Launch the application.
@@ -114,8 +108,6 @@ public class MenjacnicaGUI extends JFrame {
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
 		contentPane.add(getPanel(), BorderLayout.EAST);
 		contentPane.add(getScrollPane_1(), BorderLayout.SOUTH);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane}));
-		
 	
 	}
 
@@ -224,15 +216,9 @@ public class MenjacnicaGUI extends JFrame {
 				new String[] {
 					"Sifra", "Skraceni naziv", "Prodajni", "Srednji", "Kupovni", "Naziv"
 				}
-			) {
-				Class[] columnTypes = new Class[] {
-					Integer.class, String.class, Double.class, Double.class, Object.class, String.class
-				};
-				public Class getColumnClass(int columnIndex) {
-					return columnTypes[columnIndex];
+					));
+					addPopup(table, getPopupMenu());
 				}
-			});
-		}
 		return table;
 	}
 	private JPopupMenu getPopupMenu() {
@@ -358,41 +344,29 @@ public class MenjacnicaGUI extends JFrame {
 	}
 	
 	private void ucitajIzFajla() {
-		try {
+		
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showOpenDialog(contentPane);
 
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
-				sistem.ucitajIzFajla(file.getAbsolutePath());
-				JTextArea text = new JTextArea();
-				text.setText("Ucitan fajl:" +file.getAbsolutePath());
+				txtrStatus.setText(txtrStatus.getText()+"\n"+"Ucitan fajl: "+file.getAbsolutePath());
 				
 			}	
-			
-			
-		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
-					"Greska", JOptionPane.ERROR_MESSAGE);
-		}
 	}
-	
+
+
 	private void sacuvajUFajl() {
-		try {
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showSaveDialog(contentPane);
 
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
 
-				sistem.sacuvajUFajl(file.getAbsolutePath());
-				JTextArea text = new JTextArea();
-				text.setText("Sacuvan fajl:" +file.getAbsolutePath());
+				
+				txtrStatus.setText(txtrStatus.getText()+"\n"+"Sacuvan fajl:" +file.getAbsolutePath());
 			}
-		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
-					"Greska", JOptionPane.ERROR_MESSAGE);
-		}
+		
 	}
 	
 	private void ugasiAplikaciju() {
