@@ -75,7 +75,6 @@ public class ObrisiKursGUI extends JFrame {
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
 		
-		this.kurs = kurs;
 		this.mGUI = mGUI;
 	}
 
