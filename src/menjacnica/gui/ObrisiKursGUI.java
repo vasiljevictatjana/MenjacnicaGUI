@@ -48,7 +48,7 @@ public class ObrisiKursGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ObrisiKursGUI() {
+	public ObrisiKursGUI(MenjacnicaGUI mGUI) {
 		setTitle("Obrisi kurs");
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ObrisiKursGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/image-delayed.png")));

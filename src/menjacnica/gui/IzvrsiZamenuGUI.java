@@ -55,7 +55,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public IzvrsiZamenuGUI() {
+	public IzvrsiZamenuGUI(MenjacnicaGUI mGUI) {
 		setResizable(false);
 		setTitle("Izvrsi zamenu ");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(IzvrsiZamenuGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/image-delayed.png")));
@@ -65,9 +65,6 @@ public class IzvrsiZamenuGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		comboBox.addItem("EUR");
-		comboBox.addItem("USD");
-		comboBox.addItem("CHF");
 		
 		
 		contentPane.add(getLabel_1());

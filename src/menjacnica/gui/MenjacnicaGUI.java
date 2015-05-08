@@ -96,7 +96,7 @@ public class MenjacnicaGUI extends JFrame {
 				ugasiAplikaciju();
 			}
 		});
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MenjacnicaGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/image-delayed.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MenjacnicaGUI.class.getResource("/ikonica/kamatica.jpg")));
 		setTitle("Menjacnica");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 511, 357);
@@ -385,13 +385,13 @@ public class MenjacnicaGUI extends JFrame {
 	}
 
 	private void prikaziObrisiKursGUI() {
-		ObrisiKursGUI prozor = new ObrisiKursGUI();
+		ObrisiKursGUI prozor = new ObrisiKursGUI(this);
 		prozor.setLocationRelativeTo(contentPane);
 		prozor.setVisible(true);
 	}
 	
 	private void prikaziIzvrsiZamenuGUI() {
-		IzvrsiZamenuGUI prozor = new IzvrsiZamenuGUI();
+		IzvrsiZamenuGUI prozor = new IzvrsiZamenuGUI(this);
 		prozor.setLocationRelativeTo(contentPane);
 		prozor.setVisible(true);
 	}
