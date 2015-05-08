@@ -36,14 +36,15 @@ public class ObrisiKursGUI extends JFrame {
 	private JTextField textFieldSrednji;
 	private JTextField textFieldSkraceniNaziv;
 	private JCheckBox chckbxNewCheckBox;
-	private static JButton btnNewButton;
-	private JButton btnNewButton_1;
+	private static JButton btnObrisi;
+	private JButton btnOdustani;
 	
 
 
 	private MenjacnicaGUI mGUI;
 	private JCheckBox chckbxZaistaObrisiKurs;
 	private JLabel label;
+	
 
 	/**
 	 * Create the frame.
@@ -72,8 +73,8 @@ public class ObrisiKursGUI extends JFrame {
 		contentPane.add(getTextFieldSkraceniNaziv());
 		contentPane.add(getChckbxZaistaObrisiKurs());
 		contentPane.add(getLabel());
-		contentPane.add(getBtnNewButton());
-		contentPane.add(getBtnNewButton_1());
+		contentPane.add(getBtnObrisi());
+		contentPane.add(getBtnOdustani());
 		
 		this.mGUI = mGUI;
 	}
@@ -161,13 +162,33 @@ public class ObrisiKursGUI extends JFrame {
 			textFieldSkraceniNaziv.setColumns(10);
 		}
 		return textFieldSkraceniNaziv;
-	}
+	}	
+	
 	private JCheckBox getChckbxZaistaObrisiKurs() {
 		if (chckbxZaistaObrisiKurs == null) {
 			chckbxZaistaObrisiKurs = new JCheckBox("Zaista obrisi kurs");
-			chckbxZaistaObrisiKurs.setSelected(false);
-		};
-		
+			chckbxZaistaObrisiKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (chckbxZaistaObrisiKurs.isSelected()) {
+						textFieldSifra.setEditable(true);
+						textFieldNaziv.setEditable(true);
+						textFieldProdajni.setEditable(true);
+						textFieldSrednji.setEditable(true);
+						textFieldKupovni.setEditable(true);
+						btnObrisi.setEnabled(true);
+					}
+					else {
+						textFieldSifra.setEditable(false);
+						textFieldNaziv.setEditable(false);
+						textFieldProdajni.setEditable(false);
+						textFieldSrednji.setEditable(false);
+						textFieldKupovni.setEditable(false);
+						btnObrisi.setEnabled(false);
+					}
+
+				}
+			});
+		}
 		return chckbxZaistaObrisiKurs;
 	}
 	private JLabel getLabel() {
@@ -177,28 +198,28 @@ public class ObrisiKursGUI extends JFrame {
 		return label;
 
 	}
-	private JButton getBtnNewButton() {
-		if (btnNewButton == null) {
-			btnNewButton = new JButton("Obrisi");
-			btnNewButton.addActionListener(new ActionListener() {
+	private JButton getBtnObrisi() {
+		if (btnObrisi == null) {
+			btnObrisi = new JButton("Obrisi");
+			btnObrisi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					obrisiKurs();
 				}
 			});
-			btnNewButton.setEnabled(false);
+			btnObrisi.setEnabled(false);
 		}
-		return btnNewButton;
+		return btnObrisi;
 	}
-	private JButton getBtnNewButton_1() {
-		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("Odustani");
-			btnNewButton_1.addActionListener(new ActionListener() {
+	private JButton getBtnOdustani() {
+		if (btnOdustani == null) {
+			btnOdustani = new JButton("Odustani");
+			btnOdustani.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
 				}
 			});
 		}
-		return btnNewButton_1;
+		return btnOdustani;
 	}
 	
 	private void obrisiKurs() {
@@ -208,6 +229,7 @@ public class ObrisiKursGUI extends JFrame {
 				+textFieldSrednji.getText()+"Skraceni nazvi: "+textFieldSkraceniNaziv.getText());
 					dispose();
 	}
+
 
 
 }
