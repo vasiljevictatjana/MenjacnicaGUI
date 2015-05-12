@@ -155,7 +155,10 @@ public class DodajKursGUI extends JFrame {
 			btnNewButton = new JButton("Dodaj");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					unesiKurs();
+					mGUI.txtrStatus.append("Sifra: "+textFieldSifra.getText()+"Naziv: "+textFieldNaziv.getText()
+							+"Prodajni kurs: "+textFieldProdajni.getText()+"Kuponvi kurs: "+textFieldKupovni.getText()+"Srednji kurs: "
+							+textFieldSrednji.getText()+"Skraceni nazvi: "+textFieldSkraceniNaziv.getText()+"\n");
+					dispose();
 				}
 			});
 		}
@@ -173,12 +176,7 @@ public class DodajKursGUI extends JFrame {
 		return btnNewButton_1;
 	}
 	
-	private void unesiKurs() {
-		mGUI.txtrStatus.setText(mGUI.txtrStatus.getText()+"\n"+"Sifra: "+textFieldSifra.getText()+"Naziv: "+textFieldNaziv.getText()
-				+"Prodajni kurs: "+textFieldProdajni.getText()+"Kuponvi kurs: "+textFieldKupovni.getText()+"Srednji kurs: "
-				+textFieldSrednji.getText()+"Skraceni nazvi: "+textFieldSkraceniNaziv.getText());
-		dispose();
-	}
+	
 
 	
 }

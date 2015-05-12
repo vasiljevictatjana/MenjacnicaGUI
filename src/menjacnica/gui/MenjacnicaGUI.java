@@ -344,28 +344,41 @@ public class MenjacnicaGUI extends JFrame {
 	}
 	
 	private void ucitajIzFajla() {
-		
+		try {
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showOpenDialog(contentPane);
-
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
-				txtrStatus.setText(txtrStatus.getText()+"\n"+"Ucitan fajl: "+file.getAbsolutePath());
-				
+				txtrStatus.append("Ucitan fajl: " + file.getAbsolutePath());
+				txtrStatus.append("\n");
 			}	
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(contentPane, e.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 
 	private void sacuvajUFajl() {
+		try {
 			JFileChooser fc = new JFileChooser();
 			int returnVal = fc.showSaveDialog(contentPane);
-
-			if (returnVal == JFileChooser.APPROVE_OPTION) {
+			if(returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
-
-				
-				txtrStatus.setText(txtrStatus.getText()+"\n"+"Sacuvan fajl:" +file.getAbsolutePath());
+				txtrStatus.append("Sacuvan fajl: " + file.getAbsolutePath());
+				txtrStatus.append("\n");
 			}
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(contentPane, e.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+			//JFileChooser fc = new JFileChooser();
+			//int returnVal = fc.showSaveDialog(contentPane);
+
+			//if (returnVal == JFileChooser.APPROVE_OPTION) {
+				//File file = fc.getSelectedFile();
+				//txtrStatus.setText(txtrStatus.getText()+"\n"+"Sacuvan fajl:" +file.getAbsolutePath());
+			//}
 		
 	}
 	
